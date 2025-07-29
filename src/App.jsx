@@ -21,14 +21,6 @@ import JobPostingForm from './components/Recruitment/JobPostingForm';
 import JobApplicationsList from './components/Recruitment/JobApplicationsList';
 import JobApplicationDetail from './components/Recruitment/JobApplicationDetail';
 import InterviewSchedule from './components/Recruitment/InterviewSchedule';
-//import InterviewFeedback from './components/Recruitment/InterviewFeedback';
-
-// Onboarding/Offboarding
-//import OnboardingTemplatesList from './components/Onboarding/OnboardingTemplatesList';
-//import TemplateDetail from './components/Onboarding/TemplateDetail';
-//import EmployeeOnboardingTaskList from './components/Onboarding/EmployeeOnboardingTaskList';
-//import TaskDetail from './components/Onboarding/TaskDetail';
-//import OffboardingTaskList from './components/Onboarding/OffboardingTaskList';
 
 // Document Management
 import EmployeeDocumentList from './components/Document/EmployeeDocumentList';
@@ -90,7 +82,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
                       <Layout>
-                        <JobPostingsListPage />
+                        <JobPostingList />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -100,7 +92,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
                       <Layout>
-                        <JobPostingDetailPage />
+                        <JobPostingDetail />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -110,7 +102,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <CreateEditJobPostingPage />
+                        <JobPostingForm />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -120,7 +112,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <CreateEditJobPostingPage />
+                        <JobPostingForm />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -130,7 +122,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
                       <Layout>
-                        <JobApplicationsListPage />
+                        <JobApplicationsList />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -140,7 +132,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
                       <Layout>
-                        <JobApplicationDetailPage />
+                        <JobApplicationDetail />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -150,89 +142,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
                       <Layout>
-                        <InterviewSchedulePage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/jobs/:id/applications/:applicationId/interviews/:interviewId/feedback"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'recruiter']}>
-                      <Layout>
-                        <InterviewFeedbackPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-
-                {/* Onboarding/Offboarding */}
-                <Route
-                  path="/onboarding/templates"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
-                      <Layout>
-                        <OnboardingTemplatesListPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/onboarding/templates/:id"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
-                      <Layout>
-                        <TemplateDetailPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/onboarding/templates/create"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
-                      <Layout>
-                        <CreateEditJobPostingPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/onboarding/templates/:id/edit"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
-                      <Layout>
-                        <CreateEditJobPostingPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/employees/:employeeId/onboarding"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'manager']}>
-                      <Layout>
-                        <EmployeeOnboardingTaskListPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/employees/:employeeId/onboarding/tasks/:taskId"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'manager']}>
-                      <Layout>
-                        <TaskDetailPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/employees/:employeeId/offboarding"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
-                      <Layout>
-                        <OffboardingTaskListPage />
+                        <InterviewSchedule />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -244,7 +154,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <EmployeeDocumentsListPage />
+                        <EmployeeDocumentList />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -254,7 +164,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <UploadDocumentPage />
+                        <UploadDocument />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -264,7 +174,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <DocumentDetailPage />
+                        <DocumentDetail />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -274,7 +184,7 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Layout>
-                        <CompanyPoliciesPage />
+                        <CompanyPolicies />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -286,7 +196,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'training_manager']}>
                       <Layout>
-                        <TrainingProgramsListPage />
+                        <TrainingProgramsList />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -296,27 +206,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'training_manager']}>
                       <Layout>
-                        <ProgramDetailPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/training/programs/create"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'training_manager']}>
-                      <Layout>
-                        <CreateEditJobPostingPage />
-                      </Layout>
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/training/programs/:id/edit"
-                  element={
-                    <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'training_manager']}>
-                      <Layout>
-                        <CreateEditJobPostingPage />
+                        <ProgramDetail />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -326,7 +216,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager', 'manager']}>
                       <Layout>
-                        <EmployeeTrainingRecordsPage />
+                        <EmployeeTrainingRecords />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -336,7 +226,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <UploadCertificatesPage />
+                        <UploadCertificate />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -348,7 +238,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <DisciplinaryActionsListPage />
+                        <DisplinaryActionList />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -358,7 +248,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <DisciplinaryActionDetailPage />
+                        <DisciplinaryActionDetail />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -368,7 +258,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <CreateEditDisciplinaryActionPage />
+                        <DisciplinaryActionForm />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -378,7 +268,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <CreateEditDisciplinaryActionPage />
+                        <DisciplinaryActionForm />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -390,7 +280,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin']}>
                       <Layout>
-                        <AuditLogsPage />
+                        <AuditLogs />
                       </Layout>
                     </ProtectedRoute>
                   }
@@ -400,7 +290,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin']}>
                       <Layout>
-                        <SystemSettingsPage />
+                        <SystemSettings />
                       </Layout>
                     </ProtectedRoute>
                   }
