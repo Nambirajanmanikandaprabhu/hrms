@@ -19,7 +19,7 @@ import JobPostingList from './components/Recruitment/JobPostingList';
 import JobPostingDetail from './components/Recruitment/JobPostingDetail';
 import JobPostingForm from './components/Recruitment/JobPostingForm';
 import JobApplicationsList from './components/Recruitment/JobApplicationsList';
-import JobApplicationDetail from './components/Recruitment/JobApplicationdetail';
+import JobApplicationDetail from './components/Recruitment/JobApplicationDetail';
 import InterviewSchedule from './components/Recruitment/InterviewSchedule';
 //import InterviewFeedback from './components/Recruitment/InterviewFeedback';
 
