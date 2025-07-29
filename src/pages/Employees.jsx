@@ -498,7 +498,7 @@ const Employees = () => {
                   {/* Status */}
                   <div className="flex items-center justify-between mb-4">
                     <div className={`flex items-center space-x-2 px-3 py-1 rounded-full ${statusConfig.bg}`}>
-                      <StatusIcon className={`h-4 w-4 ${statusConfig.text}`} />
+                      {React.createElement(statusConfig.icon, { className: `h-4 w-4 ${statusConfig.text}` })}
                       <span className={`text-sm font-medium ${statusConfig.text} capitalize`}>
                         {employee.status}
                       </span>
@@ -693,7 +693,7 @@ const Employees = () => {
                         <div>
                           <p className="text-sm font-medium text-slate-600 mb-1">Employment Status</p>
                           <div className={`flex items-center space-x-2 px-3 py-1 rounded-full ${getStatusConfig(selectedEmployee.status).bg}`}>
-                            <StatusIcon className={`h-4 w-4 ${getStatusConfig(selectedEmployee.status).text}`} />
+                            {React.createElement(getStatusConfig(selectedEmployee.status).icon, { className: `h-4 w-4 ${getStatusConfig(selectedEmployee.status).text}` })}
                             <span className={`text-sm font-medium ${getStatusConfig(selectedEmployee.status).text} capitalize`}>
                               {selectedEmployee.status}
                             </span>
@@ -732,6 +732,42 @@ const Employees = () => {
           )}
         </Modal>
       </div>
+      
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes checkmark {
+          0% { transform: scale(0); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        
+        .animate-slideInUp {
+          animation: slideInUp 0.4s ease-out;
+        }
+        
+        .animate-checkmark {
+          animation: checkmark 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 };

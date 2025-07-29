@@ -573,7 +573,7 @@ const EmployeeDashboard = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes slideInUp {
           from {
             opacity: 0;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const ApplyLeave = () => {
   const navigate = useNavigate();
@@ -95,6 +95,12 @@ const ApplyLeave = () => {
 
   return (
     <div className="leave-application-container">
+      <div className="mb-6">
+        <Link to="/leave/my-requests" className="text-blue-600 hover:underline">
+          &larr; Back to My Requests
+        </Link>
+      </div>
+      
       <h1>Apply for Leave</h1>
       
       <form onSubmit={handleSubmit} className="leave-form">

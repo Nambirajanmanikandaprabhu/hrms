@@ -35,7 +35,7 @@ import EmployeeTrainingRecords from './components/Training/EmployeeTrainingRecor
 import UploadCertificate from './components/Training/UploadCertificate';
 
 // Disciplinary & Compliance
-import DisplinaryActionList from './components/Disciplinary/DisciplinaryActionList';
+import DisciplinaryActionList from './components/Disciplinary/DisciplinaryActionList';
 import DisciplinaryActionDetail from './components/Disciplinary/DisciplinaryActionDetail';
 import DisciplinaryActionForm from './components/Disciplinary/DisciplinaryActionForm';
 
@@ -238,7 +238,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <DisplinaryActionList />
+                        <DisciplinaryActionList />
                       </Layout>
                     </ProtectedRoute>
                   }

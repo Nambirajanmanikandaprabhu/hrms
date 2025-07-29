@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const AttendanceList = () => {
+  const navigate = useNavigate();
   const [attendances, setAttendances] = useState([]);
   const [filter, setFilter] = useState({
     date: '',

@@ -581,6 +581,47 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes gradient-x {
+          0%, 100% {
+            background-size: 200% 200%;
+            background-position: left center;
+          }
+          50% {
+            background-size: 200% 200%;
+            background-position: right center;
+          }
+        }
+        
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes checkmark {
+          0% { transform: scale(0); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+        
+        .animate-gradient-x {
+          animation: gradient-x 3s ease infinite;
+        }
+        
+        .animate-slideIn {
+          animation: slideIn 0.3s ease-out;
+        }
+        
+        .animate-checkmark {
+          animation: checkmark 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 };
