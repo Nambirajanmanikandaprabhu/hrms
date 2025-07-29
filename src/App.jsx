@@ -19,7 +19,7 @@ import JobPostingList from './components/Recruitment/JobPostingList';
 import JobPostingDetail from './components/Recruitment/JobPostingDetail';
 import JobPostingForm from './components/Recruitment/JobPostingForm';
 import JobApplicationsList from './components/Recruitment/JobApplicationsList';
-import JobApplicationDetail from './components/Recruitment/JobApplicationDetail';
+import JobApplicationDetail from './components/Recruitment/JobApplicationdetail';  // Keep correct path
 import InterviewSchedule from './components/Recruitment/InterviewSchedule';
 
 // Document Management
@@ -35,12 +35,13 @@ import EmployeeTrainingRecords from './components/Training/EmployeeTrainingRecor
 import UploadCertificate from './components/Training/UploadCertificate';
 
 // Disciplinary & Compliance
-import DisciplinaryActionList from './components/Disciplinary/DisciplinaryActionList';
+import DisciplinaryActionList from './components/Disciplinary/DisciplinaryActionList'; // Correct spelling
 import DisciplinaryActionDetail from './components/Disciplinary/DisciplinaryActionDetail';
 import DisciplinaryActionForm from './components/Disciplinary/DisciplinaryActionForm';
 
 // System Settings
 import AuditLogs from './pages/AuditLogs';
+
 import SystemSettings from './pages/SystemSettings';
 
 function App() {
@@ -238,7 +239,7 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['admin', 'hr_manager']}>
                       <Layout>
-                        <DisciplinaryActionList />
+                        <DisciplinaryActionList /> {/* Correct name */}
                       </Layout>
                     </ProtectedRoute>
                   }
