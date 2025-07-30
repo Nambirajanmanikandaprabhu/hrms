@@ -1,163 +1,70 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Users, 
-  Calendar, 
-  DollarSign, 
-  UserPlus, 
-  BarChart3, 
-  User, 
-  Settings, 
-  LogOut,
-  Building2,
-  FileText,
-  Clock,
-  Award
-} from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import {
+  LayoutDashboard,
+  Users,
+  Building2,
+  Clock,
+  Calendar,
+  DollarSign,
+  UserPlus,
+  Target,
+  FileText,
+  GraduationCap,
+  AlertTriangle,
+  Settings
+} from 'lucide-react';
 
-const Sidebar = ({ isOpen, onClose }) => {
-  const { user, logout } = useAuth();
-  const location = useLocation();
+const Sidebar = () => {
+  const { user, hasRole } = useAuth();
 
-  const getNavigationItems = () => {
-    const baseItems = [
-      { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    ];
+  const menuItems = [
+    { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard', roles: ['admin', 'hr', 'manager', 'employee'] },
+    { name: 'Employees', icon: Users, path: '/employees', roles: ['admin', 'hr', 'manager'] },
+    { name: 'Departments', icon: Building2, path: '/departments', roles: ['admin', 'hr'] },
+    { name: 'Attendance', icon: Clock, path: '/attendance', roles: ['admin', 'hr', 'manager', 'employee'] },
+    { name: 'Leave Management', icon: Calendar, path: '/leave', roles: ['admin', 'hr', 'manager', 'employee'] },
+    { name: 'Payroll', icon: DollarSign, path: '/payroll', roles: ['admin', 'hr'] },
+    { name: 'Recruitment', icon: UserPlus, path: '/recruitment', roles: ['admin', 'hr'] },
+    { name: 'Performance', icon: Target, path: '/performance', roles: ['admin', 'hr', 'manager'] },
+    { name: 'Documents', icon: FileText, path: '/documents', roles: ['admin', 'hr', 'manager', 'employee'] },
+    { name: 'Training', icon: GraduationCap, path: '/training', roles: ['admin', 'hr', 'manager', 'employee'] },
+    { name: 'Disciplinary', icon: AlertTriangle, path: '/disciplinary', roles: ['admin', 'hr', 'manager'] },
+    { name: 'Settings', icon: Settings, path: '/settings', roles: ['admin'] }
+  ];
 
-    switch (user?.role) {
-      case 'admin':
-        return [
-          ...baseItems,
-          { path: '/employees', icon: Users, label: 'Employee Management' },
-          { path: '/attendance', icon: Calendar, label: 'Attendance' },
-          { path: '/payroll', icon: DollarSign, label: 'Payroll' },
-          { path: '/recruitment', icon: UserPlus, label: 'Recruitment' },
-          { path: '/analytics', icon: BarChart3, label: 'Analytics' },
-          { path: '/settings', icon: Settings, label: 'Settings' },
-        ];
-      case 'hr_manager':
-        return [
-          ...baseItems,
-          { path: '/employees', icon: Users, label: 'Employees' },
-          { path: '/attendance', icon: Calendar, label: 'Attendance' },
-          { path: '/payroll', icon: DollarSign, label: 'Payroll' },
-          { path: '/recruitment', icon: UserPlus, label: 'Recruitment' },
-          { path: '/analytics', icon: BarChart3, label: 'Reports' },
-        ];
-      case 'department_manager':
-        return [
-          ...baseItems,
-          { path: '/team', icon: Users, label: 'My Team' },
-          { path: '/attendance', icon: Calendar, label: 'Team Attendance' },
-          { path: '/leave-approvals', icon: Clock, label: 'Leave Approvals' },
-          { path: '/performance', icon: Award, label: 'Performance' },
-        ];
-      case 'employee':
-        return [
-          ...baseItems,
-          { path: '/profile', icon: User, label: 'My Profile' },
-          { path: '/attendance', icon: Calendar, label: 'My Attendance' },
-          { path: '/payroll', icon: DollarSign, label: 'Payslips' },
-          { path: '/documents', icon: FileText, label: 'Documents' },
-          { path: '/requests', icon: Clock, label: 'Requests' },
-        ];
-      default:
-        return baseItems;
-    }
-  };
-
-  const navigationItems = getNavigationItems();
-
-  const handleLogout = () => {
-    logout();
-    onClose();
-  };
+  const filteredMenuItems = menuItems.filter(item => hasRole(item.roles));
 
   return (
-    <>
-      {/* Mobile overlay */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={onClose}
-        />
-      )}
-      
-      {/* Sidebar */}
-      <div className={`
-        fixed left-0 top-0 h-full w-64 bg-white dark:bg-neutral-800 shadow-lg z-50 transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static lg:z-auto
-      `}>
-        <div className="flex flex-col h-full">
-          {/* Logo */}
-          <div className="flex items-center px-6 py-4 border-b border-neutral-200 dark:border-neutral-700">
-            <Building2 className="h-8 w-8 text-primary-600" />
-            <span className="ml-3 text-xl font-semibold text-neutral-900 dark:text-white">
-              HRMS
-            </span>
-          </div>
-
-          {/* User info */}
-          <div className="flex items-center px-6 py-4 border-b border-neutral-200 dark:border-neutral-700">
-            <img
-              src={user?.avatar}
-              alt={user?.name}
-              className="h-10 w-10 rounded-full object-cover"
-            />
-            <div className="ml-3">
-              <p className="text-sm font-medium text-neutral-900 dark:text-white">
-                {user?.name}
-              </p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400 capitalize">
-                {user?.role?.replace('_', ' ')}
-              </p>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex-1 px-4 py-4 overflow-y-auto">
-            <nav className="space-y-1">
-              {navigationItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = location.pathname === item.path;
-                
-                return (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    onClick={onClose}
-                    className={`
-                      flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200
-                      ${isActive 
-                        ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300' 
-                        : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-700'
-                      }
-                    `}
-                  >
-                    <Icon className="h-5 w-5 mr-3" />
-                    {item.label}
-                  </NavLink>
-                );
-              })}
-            </nav>
-          </div>
-
-          {/* Logout */}
-          <div className="p-4 border-t border-neutral-200 dark:border-neutral-700">
-            <button
-              onClick={handleLogout}
-              className="flex items-center w-full px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-700 transition-colors duration-200"
-            >
-              <LogOut className="h-5 w-5 mr-3" />
-              Logout
-            </button>
-          </div>
-        </div>
+    <div className="bg-white w-64 shadow-lg flex flex-col">
+      <div className="p-6 border-b border-gray-200">
+        <h1 className="text-xl font-bold text-gray-800">HRMS</h1>
+        <p className="text-sm text-gray-600 mt-1">{user?.name}</p>
+        <span className="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full mt-2 capitalize">
+          {user?.role}
+        </span>
       </div>
-    </>
+      
+      <nav className="flex-1 p-4 space-y-2">
+        {filteredMenuItems.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
+                isActive
+                  ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-500'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
+              }`
+            }
+          >
+            <item.icon className="h-5 w-5" />
+            <span className="font-medium">{item.name}</span>
+          </NavLink>
+        ))}
+      </nav>
+    </div>
   );
 };
 
