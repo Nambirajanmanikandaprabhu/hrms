@@ -13,6 +13,11 @@ import AttendanceList from './pages/Attendance/AttendanceList';
 import LeaveRequests from './pages/Leave/LeaveRequests';
 import PayrollList from './pages/Payroll/PayrollList';
 import JobPostings from './pages/Recruitment/JobPostings';
+import Performance from './pages/Performance/Performance';
+import Documents from './pages/Documents/Documents';
+import Training from './pages/Training/Training';
+import Disciplinary from './pages/Disciplinary/Disciplinary';
+import Settings from './pages/Settings/Settings';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
 const App = () => {
@@ -47,6 +52,11 @@ const App = () => {
               <Route path="leave" element={<LeaveRequests />} />
               <Route path="payroll" element={<PayrollList />} />
               <Route path="recruitment" element={<JobPostings />} />
+              <Route path="performance" element={<Performance />} />
+              <Route path="documents" element={<Documents />} />
+              <Route path="training" element={<Training />} />
+              <Route path="disciplinary" element={<Disciplinary />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
             
             {/* Fallback route */}
