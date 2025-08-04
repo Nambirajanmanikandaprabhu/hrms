@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout/Layout';
 import Login from './pages/Auth/Login';
-import RegisterUser from './pages/Auth/RegisterUser';
 import Dashboard from './pages/Dashboard/Dashboard';
 import EmployeeList from './pages/Employees/EmployeeList';
 import EmployeeDetail from './pages/Employees/EmployeeDetail';
@@ -28,7 +27,6 @@ const App = () => {
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<RegisterUser />} />
             
             {/* Protected routes */}
             <Route 
