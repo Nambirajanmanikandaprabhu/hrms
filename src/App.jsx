@@ -17,6 +17,12 @@ import Documents from './pages/Documents/Documents';
 import Training from './pages/Training/Training';
 import Disciplinary from './pages/Disciplinary/Disciplinary';
 import Settings from './pages/Settings/Settings';
+import OnboardingList from './pages/Onboarding/OnboardingList';
+import OffboardingList from './pages/Offboarding/OffboardingList';
+import InterviewList from './pages/Interviews/InterviewList';
+import AuditLogsList from './pages/AuditLogs/AuditLogsList';
+import ReportsList from './pages/Reports/ReportsList';
+import NotificationsList from './pages/Notifications/NotificationsList';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
 const App = () => {
@@ -55,6 +61,12 @@ const App = () => {
               <Route path="training" element={<Training />} />
               <Route path="disciplinary" element={<Disciplinary />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="onboarding" element={<OnboardingList />} />
+              <Route path="offboarding" element={<OffboardingList />} />
+              <Route path="interviews" element={<InterviewList />} />
+              <Route path="audit-logs" element={<AuditLogsList />} />
+              <Route path="reports" element={<ReportsList />} />
+              <Route path="notifications" element={<NotificationsList />} />
             </Route>
             
             {/* Fallback route */}

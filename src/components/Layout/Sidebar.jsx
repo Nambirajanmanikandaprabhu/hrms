@@ -13,7 +13,12 @@ import {
   FileText,
   GraduationCap,
   AlertTriangle,
-  Settings
+  Settings,
+  UserMinus,
+  MessageSquare,
+  BarChart3,
+  Shield,
+  Bell
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -31,6 +36,12 @@ const Sidebar = () => {
     { name: 'Documents', icon: FileText, path: '/documents', roles: ['admin', 'hr', 'manager', 'employee'] },
     { name: 'Training', icon: GraduationCap, path: '/training', roles: ['admin', 'hr', 'manager', 'employee'] },
     { name: 'Disciplinary', icon: AlertTriangle, path: '/disciplinary', roles: ['admin', 'hr', 'manager'] },
+    { name: 'Onboarding', icon: UserPlus, path: '/onboarding', roles: ['admin', 'hr'] },
+    { name: 'Offboarding', icon: UserMinus, path: '/offboarding', roles: ['admin', 'hr'] },
+    { name: 'Interviews', icon: MessageSquare, path: '/interviews', roles: ['admin', 'hr'] },
+    { name: 'Reports', icon: BarChart3, path: '/reports', roles: ['admin', 'hr', 'manager'] },
+    { name: 'Audit Logs', icon: Shield, path: '/audit-logs', roles: ['admin'] },
+    { name: 'Notifications', icon: Bell, path: '/notifications', roles: ['admin', 'hr', 'manager', 'employee'] },
     { name: 'Settings', icon: Settings, path: '/settings', roles: ['admin'] }
   ];
 
